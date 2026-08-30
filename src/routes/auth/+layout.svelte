@@ -1,6 +1,4 @@
 <script lang="ts">
-    import './layout.css';
-    import '$lib/setup/zod-locale';
 	let { children } = $props();
 </script>
 
