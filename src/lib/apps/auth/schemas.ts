@@ -37,12 +37,14 @@ export type RegisterData = z.infer<typeof registerSchema>;
 /**
  * Represents the response returned after a successful registration.
  * 
+ * @property id - The user's unique identifier.
  * @property name - The user's name.
- * @property user_token - The authentication token associated with the user.
+ * @property email - The user's email address.
  */
-export interface RegisterResponse {
+export interface UserResponse {
+	id: string;
 	name: string;
-	user_token: string;
+	email: string;
 }
 
 

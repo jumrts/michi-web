@@ -1,7 +1,7 @@
 <!--
-@component RegisterPagePanel
+@component LoginPagePanel
 
-Layout component for the registration page.
+Layout component for the login page.
 
 Combines the marketing section with the registration form and 
 forwards validated form data through the `onSubmit` callback.
@@ -11,10 +11,10 @@ forwards validated form data through the `onSubmit` callback.
 @prop onSubmit - Callback invoked with the validated registration data. 
 -->
 
-<script lang="ts">
-	import RegisterFormCard from "../oligomers/RegisterFormCard.svelte";
-	import MarketingPanel from "../monomers/MarketingPanel.svelte";
-	import type { RegisterData } from "$lib/apps/auth/schemas";
+<script lang="ts">;
+    import MarketingPanel from "../monomers/MarketingPanel.svelte";
+	import type { LoginData } from "$lib/apps/auth/schemas";
+	import LoginFormCard from "../oligomers/LoginFormCard.svelte";
 
 	let { 
 		errorMessage,
@@ -24,11 +24,12 @@ forwards validated form data through the `onSubmit` callback.
 		errorMessage?: string;
 		isLoading?: boolean;
 		onSubmit?: (
-			data: RegisterData
+			data: LoginData
 		) => void 
 	} = $props();
 
 </script>
+
 
 <div class="grid min-h-screen w-full grid-cols-12 bg-bg">
 
@@ -38,21 +39,20 @@ forwards validated form data through the `onSubmit` callback.
 		</div>
 	</div>
 
-	<div class="col-span-6 flex flex-col gap-4 h-full items-center justify-center">
-		<RegisterFormCard 
-			errorMessage={errorMessage}
-			isLoading={isLoading}
-			onSuccess={(data) => {
-				onSubmit?.(data);
-			}}
-		/>
+
+    <div class="col-span-6 flex flex-col gap-4 h-full items-center justify-center">
+        <LoginFormCard
+            errorMessage={errorMessage}
+            isLoading={isLoading}
+            onSuccess={(data) => {
+                onSubmit?.(data);
+            }}
+        />
 		<span class="text-base text-ink-disabled">
-			Já tem conta? 
-			<a href="/auth/login" class="text-[#641531] underline hover:opacity-80">
-				Entrar
+			Ainda não tem conta? 
+			<a href="/auth/register" class="text-[#641531] underline hover:opacity-80">
+				Criar uma agora
 			</a>
 		</span>
-	</div>
-
-
+    </div>
 </div>

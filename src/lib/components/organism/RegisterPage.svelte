@@ -11,6 +11,7 @@ The registration request is performed through `AuthRepository`.
 <script lang="ts">
   import { AuthRepository } from "$lib/apps/auth/repository/repository";
 	import RegisterPagePanel from "../polymers/RegisterPagePanel.svelte";
+  import { goto } from '$app/navigation';
 
   const repo = new AuthRepository();
 
@@ -24,8 +25,8 @@ The registration request is performed through `AuthRepository`.
   onSubmit={async (data) => {
     isLoading = true;
     try {
-        const response = await repo.register(data);
-        console.log(response);
+        await repo.register(data);
+        goto(`/auth/login`);
     } catch (error) {
       errorMessage =
         error instanceof Error
@@ -33,6 +34,7 @@ The registration request is performed through `AuthRepository`.
           : "Erro ao registrar o usuário";
     } finally {
         isLoading = false;
+        errorMessage = "";
     }
   }}
 />
