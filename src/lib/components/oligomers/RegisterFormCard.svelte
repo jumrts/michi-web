@@ -74,7 +74,7 @@ to the component consuming it through the `onSuccess` callback.
 
 </script>
 
-<Card>
+<Card class="w-full max-w-md">
 	<form class="flex flex-col gap-5" onsubmit={handleSubmit} novalidate>
 		
 		<TitleStack

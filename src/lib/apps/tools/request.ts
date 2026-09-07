@@ -21,14 +21,10 @@ export async function request<T>(
 	headers: Record<string, string> = {},
 	method: "GET" | "POST" | "PATCH" | "DELETE" = "POST"
 ): Promise<T> {
-	const token = localStorage.getItem("access_token");
-
 	const response = await fetch(`${API_BASE_URL}/${path}`, {
 		method,
-		headers: {
-			...headers,
-			...(token ? { Authorization: `Bearer ${token}` } : {}),
-		},
+		credentials: 'include',
+		headers,
 		body: body ? JSON.stringify(body) : undefined,
 	});
 
