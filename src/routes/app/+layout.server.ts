@@ -10,12 +10,10 @@ import type { LayoutServerLoad } from './$types';
  * 
  * Redirects unauthenticated users to the login page. 
  */
-export const load: LayoutServerLoad = async ({ cookies }) => {
-	const token = cookies.get('access_token');
-
-	if (!token) {
-		throw redirect(303, '/login');
+export const load: LayoutServerLoad = async ({ locals }) => {
+	if (!locals.user) {
+		throw redirect(303, '/auth/login');
 	}
 
-	return {};
+	return { user: locals.user };
 };

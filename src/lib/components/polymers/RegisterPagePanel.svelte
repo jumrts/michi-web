@@ -38,7 +38,7 @@ forwards validated form data through the `onSubmit` callback.
 		</div>
 	</div>
 
-	<div class="col-span-6 flex h-full items-center justify-center">
+	<div class="col-span-6 flex flex-col gap-4 h-full items-center justify-center">
 		<RegisterFormCard 
 			errorMessage={errorMessage}
 			isLoading={isLoading}
@@ -46,6 +46,13 @@ forwards validated form data through the `onSubmit` callback.
 				onSubmit?.(data);
 			}}
 		/>
+		<span class="text-base text-ink-disabled">
+			Já tem conta? 
+			<a href="/auth/login" class="text-[#641531] underline hover:opacity-80">
+				Entrar
+			</a>
+		</span>
 	</div>
+
 
 </div>

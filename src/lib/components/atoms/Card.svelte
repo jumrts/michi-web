@@ -10,12 +10,14 @@ Reusable card component used to group and display content.
 	import type { Snippet } from "svelte";
 
 	let {
-		children
+		children,
+		class: className = ''
 	}: {
 		children: Snippet;
+		class?: string;
 	} = $props();
 </script>
 
-<div class="flex flex-col gap-5 bg-surface p-5 border border-border shadow-sm rounded-xl">
+<div class="flex flex-col gap-5 bg-surface p-5 border border-border shadow-sm rounded-xl {className}">
 	{@render children()}
 </div>

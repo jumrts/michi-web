@@ -12,8 +12,7 @@ Marketing panel used to present product messaging, progress indicators, and supp
 	const side: "left" | "right" | "center" = 	"left";
 	const textCenter: string = "Sua planilha, finalmente visível.";
 	const secondaryText: string = 
-		"Tudo o que você já controla no Sheets — contas divididas, cronograma da semana, \
-		kanji revisado, metas de longo prazo — reunido num só lugar que abre no seu dia de hoje.";
+		"Contas divididas, cronograma da semana reunido num só lugar que abre no seu dia de hoje.";
 	const gap: string = "gap-4";
 
 </script>
