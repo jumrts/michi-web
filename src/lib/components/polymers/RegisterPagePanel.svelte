@@ -30,15 +30,18 @@ forwards validated form data through the `onSubmit` callback.
 
 </script>
 
-<div class="grid min-h-screen w-full grid-cols-12 bg-bg">
+<div class="grid min-h-screen w-full grid-cols-12">
 
-	<div class="col-span-6 h-full border-r-1 border-border bg-surface-muted">
+	<div
+		class="relative col-span-8 h-full bg-surface bg-cover bg-center"
+		style="background-image: url('https://res.cloudinary.com/xkqwrj8z/image/upload/v1793826963/ab6cf498-23ed-4f54-abad-b5f136c8f4b6.png')"
+	>
 		<div class="h-full p-16">
 			<MarketingPanel />
 		</div>
 	</div>
 
-	<div class="col-span-6 flex flex-col gap-4 h-full items-center justify-center">
+    <div class="col-span-4 bg-background flex flex-col gap-4 h-full items-center justify-center">
 		<RegisterFormCard 
 			errorMessage={errorMessage}
 			isLoading={isLoading}
@@ -46,9 +49,16 @@ forwards validated form data through the `onSubmit` callback.
 				onSubmit?.(data);
 			}}
 		/>
-		<span class="text-base text-ink-disabled">
+		<span class="text-base text-tx-secondary">
 			Já tem conta? 
-			<a href="/auth/login" class="text-[#641531] underline hover:opacity-80">
+			<a 
+				href="/auth/login" 
+				class="relative w-fit cursor-pointer text-tx-expose
+					after:absolute after:bottom-0 after:left-0
+					after:h-px after:w-full after:origin-left
+					after:scale-x-0 after:bg-tx-expose
+					after:transition-transform after:duration-300
+					hover:after:scale-x-100">
 				Entrar
 			</a>
 		</span>

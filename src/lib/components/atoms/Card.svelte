@@ -20,7 +20,7 @@ Reusable card component used to group and display content.
 	} = $props();
 </script>
 
-<div class="flex flex-col gap-5 bg-none p-5 border-t border-bd-focus/20 {className}">
+<div class="flex flex-col gap-5 bg-none p-5 border-t border-bd-focus/60 {className}">
     <span class="w-full text-right text-tx-muted font-mono text-xs tracking-[0.2rem] uppercase">
         {index}
     </span>

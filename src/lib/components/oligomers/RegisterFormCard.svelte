@@ -74,16 +74,16 @@ to the component consuming it through the `onSuccess` callback.
 
 </script>
 
-<Card class="w-full max-w-md">
+<Card index="02" class="w-full max-w-md">
 	<form class="flex flex-col gap-5" onsubmit={handleSubmit} novalidate>
 		
 		<TitleStack
 			primaryText={primaryText}
-			primarySize="text-3xl"
+            primarySize="text-7xl"
 			secondaryText={secondaryText}
-			secondarySize="text-base"
+			secondarySize="text-sm"
 			tertiaryText={tertiaryText}
-			tertiarySize="text-base"
+			tertiarySize="text-xs"
 			gap="gap-2"
 		/>
 
@@ -92,7 +92,7 @@ to the component consuming it through the `onSuccess` callback.
 			name="name"
 			placeholder="Seu nome"
 			type="text"
-			titleSize="text-2xl"
+            titleSize="text-xs"
 			minLength={3}
 			maxLength={25}
 			required={true}
@@ -106,7 +106,7 @@ to the component consuming it through the `onSuccess` callback.
 			name="email"
 			placeholder="voce@gmail.com"
 			type="email"
-			titleSize="text-2xl"
+            titleSize="text-xs"
 			minLength={3}
 			maxLength={50}
 			required={true}
@@ -120,7 +120,7 @@ to the component consuming it through the `onSuccess` callback.
 			name="password"
 			placeholder="********"
 			type="password"
-			titleSize="text-2xl"
+            titleSize="text-xs"
 			minLength={8}
 			maxLength={16}
 			required={true}
@@ -130,11 +130,11 @@ to the component consuming it through the `onSuccess` callback.
 		/>
 
 		<Button 
-		name="Criar conta" 
-		type="submit"
-		buttonColor="bg-ink text-bg"
-		buttonSize="h-12"
-		isLoading={isLoading}
+			name="Criar conta" 
+			type="submit"
+			buttonColor="bg-bd-focus text-tx-primary"
+			buttonSize="h-12"
+			isLoading={isLoading}
 		>
 		{#snippet icon()}
 			<ArrowRight size={18} />
