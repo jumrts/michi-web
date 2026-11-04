@@ -12,6 +12,7 @@ Reusable input component with validation feedback and password visibility contro
 @prop maxLength - Maximum number of characters allowed. 
 @prop helperText - Helper text displayed below the input. 
 @prop error - Validation error message displayed below the input. 
+@prop oninput - Callback invoked when the input value changes.
 @prop value - Bindable input value. 
 -->
 
@@ -27,6 +28,7 @@ Reusable input component with validation feedback and password visibility contro
 		maxLength = 10,
     helperText = "",
     error = "",
+    oninput,
 		value = $bindable('') 
 	}: {
     placeholder: string;
@@ -39,12 +41,16 @@ Reusable input component with validation feedback and password visibility contro
 		maxLength?: number;
     helperText?: string;
     error?: string;
+    oninput?: (event: Event) => void;
     value: string;
   } = $props();
 
   let showPassword = $state(false);
 
   const isPasswordField = type === 'password';
+  const message = $derived(
+    !error ? '' : value.trim() === '' && helperText ? helperText : error
+  );
   const inputType = $derived(isPasswordField ? (showPassword ? 'text' : 'password') : type);
 </script>
 
@@ -64,6 +70,7 @@ Reusable input component with validation feedback and password visibility contro
 			minlength={minLength}
 			maxlength={maxLength}
       bind:value
+			oninput={oninput}
 			class="w-full border border-tx-expose/70 bg-bd-focus/5 p-2 text-base text-tx-secondary
 					focus:border-bd-focus/70 focus:outline-none"    
 			/>
@@ -93,8 +100,8 @@ Reusable input component with validation feedback and password visibility contro
   </div>
 
   {#if error}
-    <span class="text-sm text-tx-expose">{error}</span>
-  {:else if helperText}
-    <span class="text-tx-expose text-sm">{helperText}</span>
+    <span class="text-sm text-tx-expose" role="alert">
+      {message}
+    </span>
   {/if}
 </div>

@@ -97,6 +97,7 @@ to the component consuming it through the `onSuccess` callback.
             required={true}
             helperText="Informe seu e-mail."
             error={errors.email}
+            oninput={() => delete errors.email}
             bind:value={email}
         />
 
@@ -111,6 +112,7 @@ to the component consuming it through the `onSuccess` callback.
             error={errors.password}
 			minLength={8}
 			maxLength={16}
+            oninput={() => delete errors.password}
             bind:value={password}
         />
 

@@ -98,6 +98,7 @@ to the component consuming it through the `onSuccess` callback.
 			required={true}
 			helperText="Como podemos te chamar?"
 			error={errors.name}
+			oninput={() => delete errors.name}
 			bind:value={name}
 		/>
 
@@ -112,6 +113,7 @@ to the component consuming it through the `onSuccess` callback.
 			required={true}
 			helperText="Informe seu e-mail."
 			error={errors.email}
+			oninput={() => delete errors.email}
 			bind:value={email}
 		/>
 
@@ -126,6 +128,7 @@ to the component consuming it through the `onSuccess` callback.
 			required={true}
 			helperText="Use pelo menos 8 caracteres."
 			error={errors.password}
+			oninput={() => delete errors.password}
 			bind:value={password}
 		/>
 
