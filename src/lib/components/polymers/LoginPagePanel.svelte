@@ -11,48 +11,42 @@ forwards validated form data through the `onSubmit` callback.
 @prop onSubmit - Callback invoked with the validated registration data. 
 -->
 
-<script lang="ts">;
-    import MarketingPanel from "../monomers/MarketingPanel.svelte";
-	import type { LoginData } from "$lib/apps/auth/schemas";
+<script lang="ts">
+	import AuthPanel from "./AuthPanel.svelte";
 	import LoginFormCard from "../oligomers/LoginFormCard.svelte";
+	import type { LoginData } from "$lib/apps/auth/schemas";
 
-	let { 
+	let {
 		errorMessage,
 		isLoading,
 		onSubmit
-	}: { 
+	}: {
 		errorMessage?: string;
 		isLoading?: boolean;
-		onSubmit?: (
-			data: LoginData
-		) => void 
+		onSubmit?: (data: LoginData) => void;
 	} = $props();
-
 </script>
 
+<AuthPanel>
+	<LoginFormCard
+		{errorMessage}
+		{isLoading}
+		onSuccess={(data) => onSubmit?.(data)}
+	/>
 
-<div class="grid min-h-screen w-full grid-cols-12 bg-bg">
-
-	<div class="col-span-6 h-full border-r-1 border-border bg-surface-muted">
-		<div class="h-full p-16">
-			<MarketingPanel />
-		</div>
-	</div>
-
-
-    <div class="col-span-6 flex flex-col gap-4 h-full items-center justify-center">
-        <LoginFormCard
-            errorMessage={errorMessage}
-            isLoading={isLoading}
-            onSuccess={(data) => {
-                onSubmit?.(data);
-            }}
-        />
-		<span class="text-base text-ink-disabled">
-			Ainda não tem conta? 
-			<a href="/auth/register" class="text-[#641531] underline hover:opacity-80">
+	{#snippet footer()}
+		<span class="text-base text-tx-secondary">
+			Ainda não tem conta?
+			<a href="/auth/register" 
+				class="relative w-fit cursor-pointer text-tx-expose
+				after:absolute after:bottom-0 after:left-0
+				after:h-px after:w-full after:origin-left
+				after:scale-x-0 after:bg-tx-expose
+				after:transition-transform after:duration-300
+				hover:after:scale-x-100"
+			>
 				Criar uma agora
 			</a>
 		</span>
-    </div>
-</div>
+	{/snippet}
+</AuthPanel>

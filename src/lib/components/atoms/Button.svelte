@@ -37,18 +37,18 @@ Reusable button component with optional loading state and icon.
 </script>
 
 <button
-  class="{buttonColor} {buttonSize} flex flex-row items-center justify-center gap-3 rounded-lg border border-border bg-bg p-2 text-base hover:bg-[#651A31] cursor-pointer"
-  {disabled}
-  {type}
+    class="button-neon {buttonColor} {buttonSize} text-mono uppercase tracking-[0.2rem] flex flex-row items-center justify-center gap-3 p-2 text-xs cursor-pointer"
+    {disabled}
+    {type}
 >
-	{#if isLoading}
-		<span class="flex items-center gap-1.5">
-			<PointerLoading size={6} />
-		</span>
-	{:else}
-		<span class="font-thin">{name}</span>
-		{#if icon}
-			{@render icon()}
-		{/if}
-	{/if}
+    {#if isLoading}
+        <span class="flex items-center gap-1.5">
+            <PointerLoading size={6} />
+        </span>
+    {:else}
+        <span class="font-thin">{name}</span>
+        {#if icon}
+            {@render icon()}
+        {/if}
+    {/if}
 </button>

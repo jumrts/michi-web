@@ -10,9 +10,9 @@ Marketing panel used to present product messaging, progress indicators, and supp
 	const context: string = "metas, rotina e financeiro";
 	const title: string = "Meu painel";
 	const side: "left" | "right" | "center" = 	"left";
-	const textCenter: string = "Sua planilha, finalmente visível.";
+	const textCenter: string = "Sua vida, em um só lugar.";
 	const secondaryText: string = 
-		"Contas divididas, cronograma da semana reunido num só lugar que abre no seu dia de hoje.";
+		"Metas, rotina, dinheiro e pequenos passos. Tudo organizado para você enxergar o quanto já avançou.";
 	const gap: string = "gap-4";
 
 </script>
@@ -23,51 +23,51 @@ Marketing panel used to present product messaging, progress indicators, and supp
 		secondaryText={context}
 		primaryText={title}
 		side={side}
-		primarySize="text-2xl"
-		secondarySize="text-[18px]"
+		primarySize="text-xl"
+		secondarySize="text-xs"
 	/>
 
-	<div class="flex flex-col gap-8 w-1/2">
+	<div class="flex flex-col gap-2">
 
-		<span class="text-[#641531] text-4xl font-light">
+		<span class="text-bd-focus text-2xl font-light">
 			一歩ずつ
 		</span>
 
 		<TitleStack
 			primaryText={textCenter}
 			side={side}
-			primarySize="text-4xl"
+			primarySize="text-xl"
 			secondaryText={secondaryText}
-			secondarySize="text-xl"
+			secondarySize="text-sm"
 			gap={gap}
 		/>
 	
 	</div>
 
 	<div class="gap-5 flex flex-col">
-		<div class="w-full border-t border-1 border-[#D7D4D4]"></div>
+		<div class="w-full border-t border-bd-focus/20"></div>
 
 		<div class="flex flex-row gap-5 justify-between">
 
 			<TitleStack
 				primaryText="42%"
-				primarySize="text-3xl"
+				primarySize="text-2xl"
 				secondaryText="das metas do ano"
-				secondarySize="text-base"
+				secondarySize="text-xs"
 			/>
 
 			<TitleStack
 				primaryText="12"
-				primarySize="text-3xl"
+				primarySize="text-2xl"
 				secondaryText="dias seguidos de treino"
-				secondarySize="text-base"
+				secondarySize="text-xs"
 			/>
 
 			<TitleStack
 				primaryText="R$ 1,7k"
-				primarySize="text-3xl"
+				primarySize="text-2xl"
 				secondaryText="a receber de volta"
-				secondarySize="text-base"
+				secondarySize="text-xs"
 			/>
 
 		</div>	

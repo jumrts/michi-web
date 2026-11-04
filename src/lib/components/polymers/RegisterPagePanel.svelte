@@ -12,47 +12,41 @@ forwards validated form data through the `onSubmit` callback.
 -->
 
 <script lang="ts">
+	import AuthPanel from "./AuthPanel.svelte";
 	import RegisterFormCard from "../oligomers/RegisterFormCard.svelte";
-	import MarketingPanel from "../monomers/MarketingPanel.svelte";
 	import type { RegisterData } from "$lib/apps/auth/schemas";
 
-	let { 
+	let {
 		errorMessage,
 		isLoading,
 		onSubmit
-	}: { 
+	}: {
 		errorMessage?: string;
 		isLoading?: boolean;
-		onSubmit?: (
-			data: RegisterData
-		) => void 
+		onSubmit?: (data: RegisterData) => void;
 	} = $props();
-
 </script>
 
-<div class="grid min-h-screen w-full grid-cols-12 bg-bg">
+<AuthPanel>
+	<RegisterFormCard
+		{errorMessage}
+		{isLoading}
+		onSuccess={(data) => onSubmit?.(data)}
+	/>
 
-	<div class="col-span-6 h-full border-r-1 border-border bg-surface-muted">
-		<div class="h-full p-16">
-			<MarketingPanel />
-		</div>
-	</div>
-
-	<div class="col-span-6 flex flex-col gap-4 h-full items-center justify-center">
-		<RegisterFormCard 
-			errorMessage={errorMessage}
-			isLoading={isLoading}
-			onSuccess={(data) => {
-				onSubmit?.(data);
-			}}
-		/>
-		<span class="text-base text-ink-disabled">
-			Já tem conta? 
-			<a href="/auth/login" class="text-[#641531] underline hover:opacity-80">
+	{#snippet footer()}
+		<span class="text-base text-tx-secondary">
+			Já tem conta?
+			<a href="/auth/login" 
+				class="relative w-fit cursor-pointer text-tx-expose
+				after:absolute after:bottom-0 after:left-0
+				after:h-px after:w-full after:origin-left
+				after:scale-x-0 after:bg-tx-expose
+				after:transition-transform after:duration-300
+				hover:after:scale-x-100"
+			>
 				Entrar
 			</a>
 		</span>
-	</div>
-
-
-</div>
+	{/snippet}
+</AuthPanel>

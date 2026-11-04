@@ -12,6 +12,7 @@ Reusable input component with validation feedback and password visibility contro
 @prop maxLength - Maximum number of characters allowed. 
 @prop helperText - Helper text displayed below the input. 
 @prop error - Validation error message displayed below the input. 
+@prop oninput - Callback invoked when the input value changes.
 @prop value - Bindable input value. 
 -->
 
@@ -20,13 +21,14 @@ Reusable input component with validation feedback and password visibility contro
 		placeholder = "", 
 		type = "text",
 		title = "",
-		titleSize = "h-10",
+		titleSize = "text-xs",
 		required = true,
 		name = "Nome",
 		minLength = 0,
 		maxLength = 10,
     helperText = "",
     error = "",
+    oninput,
 		value = $bindable('') 
 	}: {
     placeholder: string;
@@ -39,18 +41,22 @@ Reusable input component with validation feedback and password visibility contro
 		maxLength?: number;
     helperText?: string;
     error?: string;
+    oninput?: (event: Event) => void;
     value: string;
   } = $props();
 
   let showPassword = $state(false);
 
   const isPasswordField = type === 'password';
+  const message = $derived(
+    !error ? '' : value.trim() === '' && helperText ? helperText : error
+  );
   const inputType = $derived(isPasswordField ? (showPassword ? 'text' : 'password') : type);
 </script>
 
 <div class="flex flex-col gap-1">
 
-	<label for={name} class="text-ink-subtle font-thin text-base tracking-wider uppercase {titleSize}">
+	<label for={name} class="text-tx-muted font-mono tracking-[0.2rem] uppercase {titleSize}">
 		{title}
 	</label>
 	
@@ -64,15 +70,16 @@ Reusable input component with validation feedback and password visibility contro
 			minlength={minLength}
 			maxlength={maxLength}
       bind:value
-			class="w-full rounded-lg border border-border bg-transparent p-2 text-base text-ink-muted
-						hover:border-ink focus:border-ink focus:outline-none"    
+			oninput={oninput}
+			class="w-full border border-tx-expose/70 bg-bd-focus/5 p-2 text-base text-tx-secondary
+					focus:border-bd-focus/70 focus:outline-none"    
 			/>
 
     {#if isPasswordField}
       <button
         type="button"
         onclick={() => (showPassword = !showPassword)}
-        class="absolute right-2 top-1/2 -translate-y-1/2 text-ink-subtle"
+        class="absolute right-2 top-1/2 -translate-y-1/2 text-tx-secondary/50"
         aria-label={showPassword ? 'Esconder senha' : 'Mostrar senha'}
       >
         <div class="cursor-pointer">
@@ -93,8 +100,8 @@ Reusable input component with validation feedback and password visibility contro
   </div>
 
   {#if error}
-    <span class="text-sm text-[#651A31]">{error}</span>
-  {:else if helperText}
-    <span class="text-[#651A31] text-sm">{helperText}</span>
+    <span class="text-sm text-tx-expose" role="alert">
+      {message}
+    </span>
   {/if}
 </div>

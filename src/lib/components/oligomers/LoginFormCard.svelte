@@ -26,7 +26,7 @@ to the component consuming it through the `onSuccess` callback.
 
 	const primaryText: string = "Entrar";
 	const secondaryText: string = "Seu painel abre direto no dia de hoje.";
-	const tertiaryText: string = "Bem-vindo de volta";
+	const tertiaryText: string = "Bem-vinda de volta";
 
 	let email = $state('');
 	let password = $state('');
@@ -73,16 +73,16 @@ to the component consuming it through the `onSuccess` callback.
 	}
 </script>
 
-<Card class="w-full max-w-md">
+<Card index="01" class="w-full max-w-md">
     <form class="flex flex-col gap-5" onsubmit={handleSubmit} novalidate>
 
         <TitleStack
             primaryText={primaryText}
-            primarySize="text-3xl"
+            primarySize="text-7xl"
             secondaryText={secondaryText}
-            secondarySize="text-base"
+            secondarySize="text-sm"
             tertiaryText={tertiaryText}
-            tertiarySize="text-base"
+            tertiarySize="text-xs"
             gap="gap-2"
         />
 
@@ -91,26 +91,28 @@ to the component consuming it through the `onSuccess` callback.
             name="email"
             placeholder="voce@gmail.com"
             type="email"
-            titleSize="text-2xl"
+            titleSize="text-xs"
             minLength={3}
             maxLength={50}
             required={true}
             helperText="Informe seu e-mail."
             error={errors.email}
+            oninput={() => delete errors.email}
             bind:value={email}
         />
 
         <Input
             title="Senha"
             name="password"
-            placeholder="********"
+            placeholder="• • • • • • • •"
             type="password"
-            titleSize="text-2xl"
+            titleSize="text-xs"
             required={true}
             helperText="Informe sua senha."
             error={errors.password}
 			minLength={8}
 			maxLength={16}
+            oninput={() => delete errors.password}
             bind:value={password}
         />
 
@@ -129,7 +131,7 @@ to the component consuming it through the `onSuccess` callback.
         <Button
             name="Entrar"
             type="submit"
-            buttonColor="bg-ink text-bg"
+            buttonColor="bg-bd-focus text-tx-primary"
             buttonSize="h-12"
             isLoading={isLoading}
         >
