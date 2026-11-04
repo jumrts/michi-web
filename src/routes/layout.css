@@ -1,16 +1,52 @@
 @import 'tailwindcss';
 
 @theme {
-	--color-bg: #F4F2F2;
-	--color-surface: #FFFFFF;          
-	--color-surface-muted: #F2EEF0;
+    /* Background */
+    --color-background: #110D0E;
+    --color-surface: #151112;
 
-	--color-ink: #2A1119;         
-	--color-ink-muted: #5E4C54;    
-	--color-ink-subtle: #B7B2B4; 
-	--color-ink-disabled: #695860;
+    /* Ink */
+    --color-ink: #2A1119;
+    --color-ink-muted: #5E4C54;
+    --color-ink-subtle: #B7B2B4;
+    --color-ink-disabled: #695860;
 
-	--color-border: #D7D4D4;
+    /* Primary */
+    --color-primary: #FD3042;
+    --color-primary-hover: #FF4656;
+    --color-primary-muted: #B76A70;
 
-	--font-display: Georgia, "Times New Roman", serif;  
+    /* Text */
+    --color-tx-primary: #FDEFF0;
+    --color-tx-secondary: #D8A9AF;
+    --color-tx-muted: #915E64;
+	--color-tx-expose: #6C0618;
+
+    /* Borders */
+    --color-bd: #302526;
+    --color-bd-focus: #460109;
+    --color-border: #D7D4D4;
+
+    /* Typography */
+    --font-primary: 'Inter', sans-serif;
+    --font-mono: 'IBM Plex Mono', monospace;
+
+    /* Effects */
+    --radius-sm: 2px;
+    --radius-md: 4px;
+
+}
+
+.button-neon {
+    position: relative;
+    border: 1px solid #8F1E39;
+    box-shadow: 0 0 30px #460109;
+}
+
+.button-neon::after {
+    content: "";
+    position: absolute;
+    inset: -4px;
+    border: 1px solid rgba(253, 48, 66, 0.35);
+    pointer-events: none;
 }

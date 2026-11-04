@@ -44,15 +44,15 @@ Stacked text component used to display a primary title with supporting text.
 
 <div class="flex flex-col {align} {gap}">
 
-	<span class="text-ink-subtle font-thin {tertiarySize} tracking-wider uppercase">
+	<span class="text-tx-muted font-mono {tertiarySize} tracking-[0.2rem] uppercase">
 		{tertiaryText}
 	</span>
 
-	<span class="text-ink font-display {primarySize}">
+	<span class="text-tx-primary font-primary uppercase {primarySize}">
 	{primaryText}
 	</span>
 
-	<span class="text-ink-muted {secondarySize}">
+	<span class="text-tx-secondary font-primary {secondarySize}">
 			{secondaryText}
 	</span>
 
